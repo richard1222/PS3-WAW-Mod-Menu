@@ -226,5 +226,21 @@ Because GSC ships as **plaintext compiled by the game at load**, "compiling a me
 
 ---
 
+
+---
+
+## Saber Rebranded Patches
+
+Custom rebranded versions of classic WaW menus, with all names changed to **Saber**.
+
+| Patch | Base | Download |
+|---|---|---|
+| **Saber Elite** | xEliteModdingx's ElitePatch | [patch_mp-saber-elite.ff](https://drive.google.com/file/d/166bNq9vSw08yF5lZ__WqdCprYDQuh4Sv/view?usp=sharing) |
+| **Saber Kush** | iPROFamily's Purple Kush V3 | [patch_mp-saber-kush.ff](https://drive.google.com/file/d/1y_sxcU5RZN2fJJcf9t5Vkue3JZx9Pidb/view?usp=sharing) |
+
+**Installation:** Copy to `/dev_hdd0/game/<TITLE_ID>/USRDIR/english/patch_mp.ff` via FTP (back up the original first).
+
+**Credits:** Rebranded by Saber. Original patches by xEliteModdingx and iPROFamily respectively.
+
 ## Sources
 NextGenUpdate (WaW mods sections), PSX-Place, Se7enSins, CabConModding (threads listed inline above), GitHub (primetime43/CoD-FF-Tools, primetime43/cod-research, ineedbots/t4_bot_warfare, canceer/paradisewaw, gopro2027/ParadiseWAW), YouTube (Virus Mike Rowey 2025 showcase; TheHomeTown97 Motionflex), UGX-Mods scripting wiki (https://wiki.ugx-mods.com), modsonline.com, RPCS3 wiki (title IDs), archive.org searches (no NGU threads or ElitePatch files archived).
