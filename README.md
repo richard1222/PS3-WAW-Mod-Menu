@@ -242,5 +242,75 @@ Custom rebranded versions of classic WaW menus, with all names changed to **Sabe
 
 **Credits:** Rebranded by Saber. Original patches by xEliteModdingx and iPROFamily respectively.
 
+## SPRX Menus, Plugins & RTM Tools for WaW (PS3)
+
+WaW on PS3 is overwhelmingly a **patch_mp.ff (GSC script)** scene — but SPRX plugins, RTM tools, and native-code menus exist too. This section covers everything SPRX-related for WaW.
+
+> **Why patch_mp.ff dominates WaW:** unlike MW3 (where the PS3 `patch_mp.ff` is RSA-signed), WaW's PS3 patch uses the **unsigned** `IWffu100` magic. The game happily loads unsigned GSC scripts, so the simple "edit text → repack → FTP" workflow covers 99% of use cases. SPRX only matters when you need things GSC *can't* do: aimbots, ESP/wallhacks, memory-level anti-cheat, and off-host/non-host features.
+
+---
+
+### SPRX mod menus for WaW
+
+| Menu | Creator | What it is | Link | Notes |
+|---|---|---|---|---|
+| **ParadiseWAW** | gopro2027 (original) | C++ SPRX mod menu for WaW PS3 — aimbots, tricks only possible on older CoDs, anti-cheat vs non-host cheats (godmode, noclip) | https://github.com/gopro2027/ParadiseWAW | Full C++ source public. Code reverse-engineered from UnknownCheats, ported to PS3/WaW |
+| **ParadiseWAW (fork)** | l3op | Fork of the above | https://github.com/l3op/paradisewaw | — |
+| **ParadiseWAW (fork)** | canceer | Fork of the above | https://github.com/canceer/paradisewaw | — |
+
+> No compiled ParadiseWAW `.sprx` binary is distributed on GitHub — it's **source only**. You need the PS3 SDK / PSL1GHT toolchain to build it, plus a modded EBOOT to load it (see below).
+
+### RTM (real-time modding) tools with WaW support
+
+PC-side tools that connect to the PS3 over the network (CCAPI/TMAPI) and poke memory live. No files to install on the console beyond CCAPI/TMAPI itself.
+
+| Tool | Creator | WaW features | Link | Notes |
+|---|---|---|---|---|
+| **Project Running Fox** | Brandon (brandonalex) | WaW section + 20+ other games (MW2, MW3, BO1/BO2, GTA V…) | https://github.com/brandonalex/projectrunningfox | Needs jailbroken PS3 (DEX or CEX) + CCAPI or TMAPI. Open source (C#, PS3Lib) |
+| **Ps3 Multi CoD RTM Tool v5.0.0.0 (NGU Edition)** | ExIIL | WaW: name/clan changer, non-host Cbuf_AddText, stats (unlock all, level 55), class editor, FOV, MOTD, client stats (level 65, prestige, derank), NPID/XUID spoofer | https://nextgenupdate.com/forums/ps3-mods-cheats/1018899-ps3-multi-cod-rtm-tool-exiil-v5000-ngu-edition-16.html | 🔒 NGU login-gated download |
+| **[CCAPI][TMAPI] Multi COD RTM Tool + Debugger** | NGU release | WaW name changer; built-in PPC debugger (peek/poke, PPC compiler) | https://nextgenupdate.com/forums/call-duty-series/897159-ccapitmapimulti-cod-rtm-tool-supports-older-cods-debugger-2.html | 🔒 NGU login-gated download |
+
+### How SPRX menus load on PS3 (WaW)
+
+The standard game-SPRX loading method (same across CoD titles):
+
+1. **Modded EBOOT.BIN** → `/dev_hdd0/game/<TITLE_ID>/USRDIR/EBOOT.BIN` (replaces the stock EBOOT; the modded one loads the SPRX at boot). WaW title IDs: `BLUS30192` (US), `BLES00354` (EU).
+2. **The `.sprx` file** → `/dev_hdd0/tmp/<name>.sprx` (must match the filename the EBOOT expects).
+3. Boot the game — the menu loads with it (usually opened with a button combo like L2+R2 or D-pad).
+
+> ⚠️ The EBOOT must match your console type: **DEX EBOOTs won't load on CEX**, and vice versa. Most SPRX releases ship DEX EBOOTs only.
+
+**Alternative loaders (no per-game EBOOT mod needed):**
+
+| Loader | How it works | CFW / HEN | Link |
+|---|---|---|---|
+| **webMAN MOD** (`/loadprx.ps3`) | Web command loads an SPRX into a slot at runtime: `http://<ps3-ip>/loadprx.ps3/dev_hdd0/tmp/menu.sprx` | CFW + HEN | https://github.com/aldostools/webMAN-MOD/wiki/Web-Commands |
+| **webMAN MOD** (`boot_plugins.txt`) | VSH-level plugins auto-loaded at boot from `/dev_hdd0/boot_plugins.txt` (one path per line) | CFW + HEN | https://github.com/aldostools/webman-mod/blob/HEAD/_Projects_/load_wmm/README.md |
+| **RouLette VSH Menu** (nas927/modmenups3) | VSH menu + SPRX loader + mod-menu loader + payload injector + RPC calls | CEX / DEX / HEN | https://github.com/nas927/modmenups3 |
+
+> Note: VSH plugins (loaded via `boot_plugins.txt`) run in the XMB, **not** inside the game. Game SPRX menus need the EBOOT method or webMAN's `/loadprx.ps3` / `/gameplugin.ps3mapi` while the game is running.
+
+### SPRX vs patch_mp.ff — WaW comparison
+
+| | patch_mp.ff (GSC) | SPRX (native C/C++) |
+|---|---|---|
+| **Language** | GSC script (plaintext, compiled by game at load) | C/C++ compiled to PS3 native code |
+| **What it can do** | God mode, UFO, infections, stats, gamemodes, text/UI | Everything GSC can + **aimbot, ESP, wallhack, memory hooks, anti-cheat** |
+| **Install** | Replace one file via FTP | Modded EBOOT + SPRX file (2 files, region/firmware-matched) |
+| **Host requirement** | Mostly host-only | Can do **off-host / non-host** features |
+| **Skill to make** | Edit text, repack with CoD-FF-Tools | PS3 SDK, C++, reverse engineering |
+| **CFW / HEN** | Both (just needs FTP write access) | Mostly CFW/DEX; HEN-compatible SPRX menus are rare |
+| **Ban risk** | Same as any modding | Higher for aimbots/ESP (memory signatures) |
+| **WaW scene share** | ~99% of menus | ParadiseWAW is essentially the only public one |
+
+### Bottom line for WaW
+
+- **Want a classic mod menu?** Use patch_mp.ff — it's simpler, works on CFW and HEN, and the entire WaW catalog (Purple Kush, ElitePatch, xRaW…) is GSC-based.
+- **Want an aimbot or non-host features?** SPRX is the only route — ParadiseWAW is the reference implementation, but you'll need to compile it and sort out a working EBOOT for your firmware/region.
+- **Want to poke memory live from your PC?** Grab an RTM tool (Project Running Fox is open source; ExIIL's is the most feature-complete for WaW) + CCAPI on the PS3.
+
+
+---
+
 ## Sources
 NextGenUpdate (WaW mods sections), PSX-Place, Se7enSins, CabConModding (threads listed inline above), GitHub (primetime43/CoD-FF-Tools, primetime43/cod-research, ineedbots/t4_bot_warfare, canceer/paradisewaw, gopro2027/ParadiseWAW), YouTube (Virus Mike Rowey 2025 showcase; TheHomeTown97 Motionflex), UGX-Mods scripting wiki (https://wiki.ugx-mods.com), modsonline.com, RPCS3 wiki (title IDs), archive.org searches (no NGU threads or ElitePatch files archived).
