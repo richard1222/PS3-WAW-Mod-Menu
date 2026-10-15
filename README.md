@@ -1,5 +1,12 @@
 # Call of Duty: World at War (PS3) — Definitive Mod Menu Guide
 
+---
+
+## Join Our Discord
+
+- **Discord:** unosdopplegange
+- **Discord server:** https://discord.gg/MDcaC5nPuA
+
 **Compiled 2026-10-08/09. Research only: text-search, no accounts, no downloads, no live site visits.**
 
 ---
@@ -314,10 +321,3 @@ The standard game-SPRX loading method (same across CoD titles):
 
 ## Sources
 NextGenUpdate (WaW mods sections), PSX-Place, Se7enSins, CabConModding (threads listed inline above), GitHub (primetime43/CoD-FF-Tools, primetime43/cod-research, ineedbots/t4_bot_warfare, canceer/paradisewaw, gopro2027/ParadiseWAW), YouTube (Virus Mike Rowey 2025 showcase; TheHomeTown97 Motionflex), UGX-Mods scripting wiki (https://wiki.ugx-mods.com), modsonline.com, RPCS3 wiki (title IDs), archive.org searches (no NGU threads or ElitePatch files archived).
-
----
-
-## Join Our Discord
-
-- **Discord:** unosdopplegange
-- **Discord server:** https://discord.gg/MDcaC5nPuA
