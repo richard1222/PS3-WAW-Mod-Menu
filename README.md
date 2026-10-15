@@ -317,7 +317,7 @@ NextGenUpdate (WaW mods sections), PSX-Place, Se7enSins, CabConModding (threads 
 
 ---
 
-## Community
+## Join Our Discord
 
 - **Discord:** unosdopplegange
 - **Discord server:** https://discord.gg/MDcaC5nPuA
